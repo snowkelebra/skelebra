@@ -1,0 +1,36 @@
+[Download and Installation]
+Add these lines below to "NetworkManager.conf" and ADD YOUR ADAPTER MAC below [keyfile] This will make the Network-Manager ignore the device, and therefor don't cause problems.
+
+[device]
+wifi.scan-rand-mac-address=no
+
+[ifupdown]
+managed=false
+
+[connection]
+wifi.powersave=0
+
+[main]
+plugins=keyfile
+
+[keyfile]
+unmanaged-devices=mac:A7:A7:A7:A7:A7
+
+uname -r kernel ver
+
+apt update && apt upgrade
+apt install -y bc linux-headers-amd64
+git clone https://github.com/kimocoder/rtl8188e ???
+cd rtl8188eus????
+cp realtek_blacklist.conf /etc/modprobe.d
+make
+make install
+
+REBOOT???
+[Enabling Monitor Mode]
+systemctl stop NetworkManager.service
+iwconfig wlan0 mode monitor
+airodump-ng wlan0
+
+[Testing Packet Injection]
+aireplay-ng --test wlan0
