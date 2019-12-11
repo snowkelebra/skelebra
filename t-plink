@@ -14,7 +14,7 @@ wifi.powersave=0
 plugins=keyfile
 
 [keyfile]
-unmanaged-devices=mac:A7:A7:A7:A7:A7
+unmanaged-devices=mac:A7:A7:A7:A7:A7  -----sudo ifconfig | grep HWaddr
 
 uname -r kernel ver
 
